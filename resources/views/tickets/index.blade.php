@@ -31,21 +31,12 @@
             <tr >
               <td >{!! $ticket->id !!}</td >
               <td >
-                <a href="{!! action('TicketsController@edit', $ticket->slug) !!}" >{!! $ticket->title !!} </a >
+                <a href="{!! action('TicketsController@show', $ticket->slug) !!}" >{!! $ticket->title !!} </a >
               </td >
               <td >{!! $ticket->status ? 'Pending' : 'Answered' !!}</td >
               <td >
-                <a href="{!! action('TicketsController@edit', $ticket->slug) !!}"
-                   class="btn btn-info pull-left" >Edit</a >
-
-                <form method="post"
-                      action="{!! action('TicketsController@destroy', $ticket->slug) !!}"
-                      class="pull-left" >
-                  <input type="hidden" name="_token" value="{!! csrf_token() !!}" >
-                  <div >
-                    <button type="submit" class="btn btn-warning" >Delete</button >
-                  </div >
-                </form >
+                <a href="{!! action('TicketsController@show', $ticket->slug) !!}"
+                   class="btn btn-info pull-left" >reply</a >
               </td >
             </tr >
           @endforeach

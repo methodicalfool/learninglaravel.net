@@ -18,27 +18,34 @@ Route::get( '/about', 'PagesController@about' );
 Route::get( '/contact', 'TicketsController@create' );
 Route::post( '/contact', 'TicketsController@store' );
 Route::get( '/tickets', 'TicketsController@index' );
-Route::get('/ticket/{slug?}', 'TicketsController@show');
+Route::get( '/ticket/{slug?}', 'TicketsController@show' );
 
-Route::get('/ticket/{slug?}/edit','TicketsController@edit');
-Route::post('/ticket/{slug?}/edit','TicketsController@update');
-Route::post('/ticket/{slug?}/delete','TicketsController@destroy');
+Route::get( '/ticket/{slug?}/edit', 'TicketsController@edit' );
+Route::post( '/ticket/{slug?}/edit', 'TicketsController@update' );
+Route::post( '/ticket/{slug?}/delete', 'TicketsController@destroy' );
+
+Route::post( '/comment', 'CommentsController@newComment' );
 
 
-Route::get('sendemail', function () {
+Route::get( 'sendemail',
+  function ()
+  {
 
-    $data = array(
-        'name' => "Learning Laravel",
-    );
+    $data = [
+      'name' => "Learning Laravel",
+    ];
 
-    Mail::send('emails.welcome', $data, function ($message) {
+    Mail::send( 'emails.welcome',
+                $data,
+      function ( $message )
+      {
 
-        $message->from('learning-laravel-test@oreillyweb.com', 'Learning Laravel');
+        $message->from( 'learning-laravel-test@oreillyweb.com', 'Learning Laravel' );
 
-        $message->to('learning-laravel-test@oreillyweb.com')->subject('Learning Laravel test email');
+        $message->to( 'learning-laravel-test@oreillyweb.com' )->subject( 'Learning Laravel test email' );
 
-    });
+      } );
 
     return "Your email has been sent successfully";
 
-});
+  } );
